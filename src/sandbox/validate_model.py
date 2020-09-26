@@ -1,25 +1,10 @@
 import sys
 
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 from ml_lib.moleimages import MoleImages
 
 from ml_lib.roc import classification_report, plot_roc
-
-import tensorflow as tf
-
-from keras.backend import set_session
-
-gpu = 0
-if (len(sys.argv) > 2):
-    if sys.argv[2] == "-gpu": gpu = 1
-
-config = tf.ConfigProto(
-    device_count = {"GPU": gpu}
-)
-config.gpu_options.allow_growth = True
-sess = tf.Session(config=config)
-set_session(sess)
 
 model_path = sys.argv[1]
 

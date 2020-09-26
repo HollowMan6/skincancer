@@ -1,26 +1,17 @@
 from numpy.random import seed
 seed(1)
-from tensorflow import set_random_seed
-set_random_seed(2)
+import tensorflow as tf
+tf.random.set_seed(2)
 
 
 from ml_lib.cnn_model import CNN
 from ml_lib.moleimages import MoleImages
 from ml_lib.roc import plot_roc
 
-import tensorflow as tf
 from sklearn.metrics import classification_report
 
 import matplotlib.pyplot as plt
-
-from keras.backend.tensorflow_backend import set_session
-
-config = tf.ConfigProto()
-#config.log_device_placement=True
-#config.gpu_options.per_process_gpu_memory_fraction = 0.8
-config.gpu_options.allow_growth=True
-sess = tf.Session(config=config)
-set_session(sess)
+import os.path
 
 
 train_data_dir = 'data_scaled/'
@@ -37,7 +28,8 @@ X_train, y_train = mimg.load_test_images('data_scaled/benign', 'data_scaled/mali
 
 mycnn = CNN()
 
-mycnn.load_model("models/model_1_test.h5")
+if os.path.isfile("models/model_1_test.h5"):
+    mycnn.load_model("models/model_1_test.h5")
 
 areas = []
 accuracies = []

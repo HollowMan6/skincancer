@@ -1,8 +1,8 @@
 from ml_lib.dlmodel import DLModel
-from keras.applications import VGG16
-from keras.layers import Dropout, Flatten, Dense, Conv2D, MaxPooling2D, Activation, concatenate, Input
-from keras.models import  Model, Sequential
-from keras import optimizers
+from tensorflow.keras.applications import VGG16
+from tensorflow.keras.layers import Dropout, Flatten, Dense, Conv2D, MaxPooling2D, Activation, concatenate, Input
+from tensorflow.keras.models import  Model, Sequential
+from tensorflow.keras import optimizers
 
 
 class CombinedModelV2(DLModel):

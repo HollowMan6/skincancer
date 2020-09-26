@@ -1,18 +1,10 @@
 from ml_lib.vgg_model import VGGModel
 from ml_lib.moleimages import MoleImages
 from ml_lib.roc import plot_roc
-import tensorflow as tf
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
-from keras.backend.tensorflow_backend import set_session
+import os.path
 
-
-config = tf.ConfigProto(
-    #device_count = {"GPU": 0}
-)
-config.gpu_options.allow_growth = True
-sess = tf.Session(config=config)
-set_session(sess)
 
 train_data_dir = 'data_scaled/'
 validation_data_dir = 'data_scaled_validation/'
@@ -37,7 +29,8 @@ my_model = VGGModel()
 
 print(my_model.model.summary())
 
-my_model.load_model(model_save_path)
+if os.path.isfile(model_save_path):
+    my_model.load_model(model_save_path)
 
 accuracies = []
 areas = []

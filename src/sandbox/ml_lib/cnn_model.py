@@ -1,9 +1,9 @@
-from keras.models import Sequential, load_model
-from keras.layers import Conv2D, MaxPooling2D
-from keras.layers import Activation, Dropout, Flatten, Dense
-from keras import backend as K
+from tensorflow.keras.models import Sequential, load_model
+from tensorflow.keras.layers import Conv2D, MaxPooling2D
+from tensorflow.keras.layers import Activation, Dropout, Flatten, Dense
+from tensorflow.keras import backend as K
 from ml_lib.dlmodel import DLModel
-from keras import optimizers
+from tensorflow.keras import optimizers
 
 
 class CNN(DLModel):

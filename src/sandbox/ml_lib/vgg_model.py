@@ -1,8 +1,8 @@
 from ml_lib.dlmodel import DLModel
-from keras.applications import VGG16
-from keras.layers import Dropout, Flatten, Dense
-from keras.models import  Model, Sequential
-from keras import optimizers
+from tensorflow.keras.applications import VGG16
+from tensorflow.keras.layers import Dropout, Flatten, Dense
+from tensorflow.keras.models import  Model, Sequential
+from tensorflow.keras import optimizers
 
 
 class VGGModel(DLModel):

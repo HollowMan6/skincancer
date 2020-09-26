@@ -1,5 +1,5 @@
-from keras.models import load_model
-from keras import backend as K
+from tensorflow.keras.models import load_model
+from tensorflow.keras import backend as K
 
 
 class DLModel:
@@ -9,7 +9,7 @@ class DLModel:
         self.img_rows = image_size[0]
         self.img_cols = image_size[1]
         self.img_channels = image_size[2]
-        if K.image_dim_ordering() == 'th':
+        if K.image_data_format() == "channels_first":
             self.input_shape = (self.img_channels, self.img_rows, self.img_cols)
         else:
             self.input_shape = (self.img_rows, self.img_cols, self.img_channels)
@@ -20,7 +20,7 @@ class DLModel:
         print("[ WARN ] No architecture specified")
 
     def fit(self, X_train, y_train, X_test, y_test, nb_epoch=10, batch_size=50):
-        if K.image_dim_ordering() == 'th':
+        if K.image_data_format() == "channels_first":
             X_train = X_train.reshape(X_train.shape[0], self.img_channels,
                                         self.img_rows, self.img_cols)
             X_test = X_test.reshape(X_test.shape[0], self.img_channels,

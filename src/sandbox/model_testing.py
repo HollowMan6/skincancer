@@ -1,6 +1,6 @@
-from keras.applications import VGG16
-from keras.layers import Dropout, Flatten, Dense, Conv2D, MaxPooling2D, Activation, concatenate, Input
-from keras.models import Sequential, Model
+from tensorflow.keras.applications import VGG16
+from tensorflow.keras.layers import Dropout, Flatten, Dense, Conv2D, MaxPooling2D, Activation, concatenate, Input
+from tensorflow.keras.models import Sequential, Model
 
 from ml_lib.combined_model_v2 import CombinedModelV2
 

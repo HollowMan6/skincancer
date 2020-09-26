@@ -1,23 +1,12 @@
 from ml_lib.combined_model import CombinedModel
 from ml_lib.moleimages import MoleImages
 from ml_lib.roc import plot_roc
-import tensorflow as tf
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
-from keras.backend.tensorflow_backend import set_session
-from keras.preprocessing.image import ImageDataGenerator
-from keras.callbacks import TensorBoard
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.callbacks import TensorBoard
 
-from keras.utils import plot_model
-
-
-
-config = tf.ConfigProto(
-    #device_count = {"GPU": 0}
-)
-config.gpu_options.allow_growth = True
-sess = tf.Session(config=config)
-set_session(sess)
+from tensorflow.keras.utils import plot_model
 
 train_data_dir = 'data_scaled/'
 validation_data_dir = 'data_scaled_validation/'

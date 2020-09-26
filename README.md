@@ -5,6 +5,13 @@ Original repo can be found [here](https://github.com/dasoto/skincancer)
 
 This is a forked version by Freddie Poser  - https://vogonjeltz.com
 
+## Upgrade to Tensorflow 2 by Hollow Man
+Upgrade the codes in [src/sandbox](src/sandbox/)
+
+If you use the [models](models/) here and find the errors loading using Tensorflow 2.3.1 like [IndexError: list index out of range](https://github.com/tensorflow/tensorflow/issues/43561), Please follow the instructions in https://stackoverflow.com/questions/64073371/keras-model-errors-on-loading-using-tf2-3-indexerror-list-index-out-of-range
+
+Further Tensorflow version is expected to fix this issue: https://github.com/tensorflow/tensorflow/pull/43570
+
 ## 1. Data
 The data from this project comes from the [ISIC Archive](https://isic-archive.com/#images) which contains a huge number of images of melanomas which have been used here to train models to classify the risk of a mole turning malignant.
 

@@ -1,19 +1,12 @@
 from ml_lib.cnn_model import CNN
 from ml_lib.moleimages import MoleImages
-import tensorflow as tf
-from keras.backend.tensorflow_backend import set_session
-from keras.preprocessing.image import ImageDataGenerator
-from keras.callbacks import ModelCheckpoint
-from ml_lib.callbacks import GraphingCallback
-from keras.utils.vis_utils import plot_model
-import sys
 
-config = tf.ConfigProto(
-    #device_count = {"GPU": 0}
-)
-config.gpu_options.allow_growth = True
-sess = tf.Session(config=config)
-set_session(sess)
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.callbacks import ModelCheckpoint
+from ml_lib.callbacks import GraphingCallback
+from tensorflow.python.keras.utils.vis_utils import plot_model
+import sys
+import os.path
 
 MODEL_NAME_COMP = "v1_2_cnn_DA"
 MODEL_NAME = "CNN V2 with DA"
@@ -59,19 +52,18 @@ validation_generator = validation_datagen.flow_from_directory(
 
 my_model = CNN()
 
-my_model.load_model(model_save_path)
+if os.path.isfile(model_save_path):
+    my_model.load_model(model_save_path)
 
 print(my_model.model.summary())
 
 #plot_model(my_model.model, to_file='model.png')
 
-sys.exit(0)
-
 print("Starting training for {} epochs".format(nb_epochs))
 
 grapher = GraphingCallback(5, my_model, X_test, y_test, MODEL_NAME)
 
-best_model_VA = ModelCheckpoint('models/auto/'+MODEL_NAME_COMP+'_bm_acc_{epoch:02d}_{val_acc:.2f}.h5',monitor='val_acc',
+best_model_VA = ModelCheckpoint('models/auto/'+MODEL_NAME_COMP+'_bm_acc_{epoch:02d}_{val_accuracy:.2f}.h5',monitor='val_accuracy',
                                 mode = 'max', verbose=1, save_best_only=True)
 
 callbacks = [
